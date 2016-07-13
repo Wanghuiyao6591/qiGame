@@ -1,0 +1,126 @@
+$width:560px;
+*{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+body{
+	background:url(img/143.jpg) no-repeat;
+	background-size:cover;
+}
+.bg1{
+	width:700px;
+	height:700px;
+	background:url(img/bg1.png) no-repeat;
+	background-size:cover;
+	position:absolute;
+	bottom:0;
+	right:0;
+	opacity:0;
+	animation:shan 5s ease infinite 1s;
+}
+@keyframes shan{
+	0%{
+		opacity:0;
+	}
+	50%{
+		opacity:1;
+	}
+	100%{
+		opacity:0;
+	}
+}
+.qipan{
+	width:$width;
+	height:$width;
+	margin:30px auto 0;
+	position: relative;
+	background:rgba(201,222,229,0.76);
+	background-size:cover;
+  	border-left-color:#AF8958;
+  	span{
+  		display:block;
+  		width:$width/70;
+  		height:$width/70;
+  		background:#000;
+  		border-radius:50%;
+  		position:absolute;
+  		animation:drop .6s ease forwards;
+  		opacity:0;
+  		@for $i from 1 through 5{
+  			&:nth-of-type(#{$i}){
+  				animation-delay:$i* .2s;
+  			}
+  		}
+  		&:nth-of-type(1){
+  			top:3.5*$width/15-$width/120;
+  			left:3.5*$width/15-$width/120;
+  		}
+  		&:nth-of-type(2){
+  			top:3.5*$width/15-$width/120;
+  			left:11.5*$width/15-$width/120;
+  		}
+  		&:nth-of-type(3){
+  			top:7.5*$width/15-$width/120;
+  			left:7.5*$width/15-$width/120;
+  		}
+  		&:nth-of-type(4){
+  			top:11.5*$width/15-$width/120;
+  			left:3.5*$width/15-$width/120;
+  		}
+  		&:nth-of-type(5){
+  			top:11.5*$width/15-$width/120;
+  			left:11.5*$width/15-$width/120;
+  		}
+  	}
+}
+@keyframes drop{
+	0%{
+		transform:translate3d(0,-100px,0);
+	}
+	100%{
+		transform:translate3d(0,0,0);
+		opacity:1;
+	}
+}
+.qizi{
+	position:relative;
+	z-index:2;
+	float:left;
+	width:$width/15-6px;
+	height:$width/15-6px;
+	margin:3px;
+	opacity:0;
+}
+.qizi.hei{
+	background-image:linear-gradient(#3e432e,#000);
+	border-radius:50%;
+}
+.qizi.bai{
+	background-image:linear-gradient(#fff,#d1d6d8);
+	border-radius:50%;
+}
+.heng{
+	display:block;
+	position:absolute;
+	left:$width/30;
+	height:1px;
+	background:#000;
+	width:$width -$width/15;
+}
+.shu{
+	display:block;
+	position:absolute;
+	top:$width/30;
+	width:1px;
+	background:#000;
+	height:$width -$width/15;
+}
+@for $i from 0 through 14{
+	.qipan b:nth-of-type(#{$i+1}){
+		top:$width/30 + $i*$width/15;
+	}
+	.qipan i:nth-of-type(#{$i+1}){
+		left:$width/30 + $i*$width/15;
+	}
+}
