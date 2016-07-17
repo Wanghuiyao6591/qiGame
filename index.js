@@ -1,4 +1,7 @@
 $(function(){
+	$('<div>').addClass('renji').appendTo('body').text('人机对战');
+	$('<div>').addClass('double').appendTo('body').text('双人对战');
+
 	var kongbai={};
 	for(var i=0;i<15;i++){
 		$('<b>')
@@ -24,7 +27,35 @@ $(function(){
 	var kaiguan=true;
 	var hei={};
 	var bai={};
-	var isAi=true;
+	var isAi;
+
+
+	$('.renji').on('click',function(){
+		isAi=true;
+		$('<div>')
+		.addClass('tishi yidan')
+		.text('您已选择人机对战模式')
+		.appendTo('.qipan')
+		.attr('style','display:block');
+		$('.double')
+		.animate({
+			top:-1000
+		});
+	})
+	$('.double').on('click',function(){
+		kaiguan=true;
+		$('<div>')
+		.addClass('tishi yidan')
+		.text('您已选择双人对战模式')
+		.appendTo('.qipan')
+		.attr('style','display:block');
+		$('.renji')
+		.animate({
+			top:-1000
+		});
+	})
+	
+	
 
 	var join=function(n1,n2){
 		return n1+'-'+n2;
@@ -85,7 +116,7 @@ $(function(){
 		return Math.max(h,s,zx,yx);
 	}
 
-	var ai=function(){
+	function ai(){
 		var max1=-Infinity;
 		var zuobiao1;
 		for(var i in kongbai){
@@ -121,9 +152,13 @@ $(function(){
 			delete kongbai[join(pos.x,pos.y)];
 			if(panduan(pos,hei) >=5){
 				$('.qizi').off('click');
-				alert('黑棋赢了！');
+				$('<div>')
+				.addClass('tishi yidan')
+				.text('您击败了对手')
+				.appendTo('.qipan')
+				.attr('style','display:block');
+				$('<div>').addClass('again').appendTo('.qipan').text('再来一局');
 			}
-			// kaiguan=false;
 			if(isAi){
 				var pos=ai();
 				$('#'+join(pos.x,pos.y)).addClass('bai').css({opacity:1});
@@ -131,8 +166,13 @@ $(function(){
 				delete kongbai[join(pos.x,pos.y)];
 				if(panduan(pos,bai) >=5){
 					$('.qizi').off('click');
-					alert('白棋赢了！');
-				}	
+					$('<div>')
+					.addClass('tishi yidan')
+					.text('白棋略胜一筹')
+					.appendTo('.qipan')
+					.attr('style','display:block');
+					$('<div>').addClass('again').appendTo('.qipan').text('再来一局');
+					}	
 				return;
 			}	
 		}else{
@@ -142,10 +182,17 @@ $(function(){
 			bai[pos.x+'-'+pos.y]=true;	
 			if(panduan(pos,bai) >=5){
 				$('.qizi').off('click');
-				alert('白棋赢了！');
+				$('<div>')
+				.addClass('tishi yidan')
+				.text('白棋赢，英雄下次再见')
+				.appendTo('.qipan')
+				.attr('style','display:block');
+				$('<div>').addClass('again').appendTo('.qipan').text('再来一局');
 			}
-			// kaiguan=true;
 		}
 		kaiguan=!kaiguan;
+	})
+	$('.again').on('click',function(){
+		location.reload();
 	})
 })

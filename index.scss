@@ -30,6 +30,104 @@ body{
 		opacity:0;
 	}
 }
+.renji{
+	width:240px;
+	height:100px;
+	background:url(img/method.png) no-repeat;
+	position:absolute;
+	top:140px;
+	left:70px;
+	text-align:right;
+	font-size:24px;
+	color:#fff;
+	line-height:100px;
+	font-family:"微软雅黑";
+	cursor:pointer;
+	&:hover{
+		font-size:30px;
+		color:#FAED89;
+	}
+}
+.double{
+	width:240px;
+	height:100px;
+	background:url(img/method.png) no-repeat;
+	position:absolute;
+	top:260px;
+	left:70px;
+	text-align:right;
+	font-size:24px;
+	color:#fff;
+	line-height:100px;
+	font-family:"微软雅黑";
+	cursor:pointer;
+	&:hover{
+		font-size:30px;
+		color:#FAED89;
+	}
+}
+.again{
+	width:240px;
+	height:100px;
+	background:#000;
+	font-family:"微软雅黑";
+	text-align:center;
+	color:#fff;
+	@extend %juzhong;
+	opacity:0;
+	line-height:100px;
+	animation:again .6s ease forwards 2s;
+	cursor:pointer;
+	z-index:1000;
+	&:hover{
+		font-size:30px;
+		color:#000;
+		background:#fff;
+	}
+}
+@keyframes again{
+	0%{
+		top:-1000px;
+	}
+	100%{
+		top:0;
+		opacity:1;
+	}
+}
+%juzhong{
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	margin:auto;
+}
+.tishi{
+	width:400px;
+	height:100px;
+	background:#000;
+	font-family:"微软雅黑";
+	text-align:center;
+	color:#fff;
+	@extend %juzhong;
+	display:none;
+	animation:xiaoshi 4s ease forwards;
+	z-index:100;
+	line-height:100px;
+}
+@keyframes xiaoshi{
+	0%{
+		top:-1000px;
+	}
+	50%{
+		top:0;
+	}
+	100%{
+		top:-1000px;
+		opacity:0;
+	}
+}
+
 .qipan{
 	width:$width;
 	height:$width;
