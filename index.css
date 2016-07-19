@@ -148,7 +148,17 @@ body {
   background-size: cover;
   border-left-color: #AF8958;
   display: block;
-  /*animation: xiaoshi 4s ease forwards;*/
+  animation: have 1.6s ease forwards;
+}
+@keyframes have {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 560px;
+    height: 560px;
+  }
 }
 
 .qipan span {
