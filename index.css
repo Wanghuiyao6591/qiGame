@@ -85,7 +85,7 @@ body {
   line-height: 100px;
   animation: again .6s ease forwards 2s;
   cursor: pointer;
-  z-index: 1000;
+  z-index:10000;
 }
 
 .again:hover {
@@ -147,6 +147,8 @@ body {
   background: rgba(201, 222, 229, 0.76);
   background-size: cover;
   border-left-color: #AF8958;
+  display: block;
+  /*animation: xiaoshi 4s ease forwards;*/
 }
 
 .qipan span {
